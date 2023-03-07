@@ -1,0 +1,66 @@
+body{
+    position: relative;
+}
+
+.cards{
+    display: flex;
+    margin-left: 10px;
+}
+
+
+.flip{
+    transform: rotateY(180deg);
+}
+
+.face{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    position: absolute;
+    border-radius: 10px;
+}
+
+
+.card{
+    display: flex;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: all .5s;
+    margin-left: 80px; 
+    margin-right: 105px;
+
+}
+
+#front{
+    transform: rotateY(180deg);
+}
+
+#back{
+    backface-visibility: hidden
+}
+
+#titulo{
+    margin-left: 15px;
+}
+
+#bt_reset{
+    margin-left: 20px;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    
+}
+
+.txt_quem{
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: -20px;
+}

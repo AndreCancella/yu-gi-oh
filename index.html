@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/card.css" media="screen" />
+
+    <script>
+        const getCard = async () => {
+            for (var x = 1; x <= 4; x++) {
+                const r = Math.floor(Math.random() * 10);
+                const response = await fetch(
+                    'https://db.ygoprodeck.com/api/v7/randomcard.php'
+                );
+                const data = await response.json();
+                const imgElement = document.querySelector('[data-target="monster-card' + x + '"]');
+                const cardImage = data.card_images[0].image_url;
+                imgElement.src = cardImage;
+
+            }
+        }
+        getCard();
+    </script>
+</head>
+
+<body>
+    <div class="nav">
+        <img src="img/Yu-Gi-Oh!_(Logo).jpg" width="100px">
+        <h1 id="titulo">Cards Yu-Gi-Oh</h1>
+        <button id="bt_reset" onclick="resetCards()">Resetar</button>
+        <button id="bt_reset" onclick="defesa()">Defesa</button>
+    </div>
+    <div class="cards">
+        <div class="flip card" width="180px" height="263px">
+            <div class="face" id="front">
+                <img class="img" src="img/Back-Anime-2.webp" width="180px" height="263px">
+            </div>
+            <div class="face" id="back">
+                <div class="txt_quem">
+                    <img data-target="monster-card1" src="" alt="card" width="180px" height="263px" />
+                </div>
+            </div>
+        </div>
+        <div class="flip card" width="180px" height="263px">
+            <div class="face" id="front">
+                <img class="img" src="img/Back-Anime-2.webp" width="180px" height="263px">
+            </div>
+            <div class="face" id="back">
+                <div class="txt_quem" width="350px" height="150px">
+                    <img data-target="monster-card2" src="" alt="card" width="180px" height="263px"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip card" width="180px" height="263px">
+            <div class="face" id="front">
+                <img class="img" src="img/Back-Anime-2.webp" width="180px" height="263px">
+            </div>
+            <div class="face" id="back">
+                <div class="txt_quem" width="350px" height="150px">
+                    <img data-target="monster-card3" src="" alt="card" width="180px" height="263px"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip card" width="180px" height="263px">
+            <div class="face" id="front">
+                <img class="img" src="img/Back-Anime-2.webp" width="180px" height="263px">
+            </div>
+            <div class="face" id="back">
+                <div class="txt_quem" width="350px" height="150px">
+                    <img data-target="monster-card4" src="" alt="card" width="180px" height="263px"/>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        const cards = document.querySelectorAll(".card");
+        cards.forEach(
+            (card) => {
+                card.addEventListener("click", (e) => {
+                    card.classList.toggle("flip")
+                })
+            }
+        )
+
+        const resetCards = async () => {
+            location.reload();  
+            getCard();
+        }
+    </script>
+</body>
+
+</html>
